@@ -10,8 +10,8 @@ const Footer = () => {
                               <div className="bg-[#112240] lg:w-[50%] text-center py-6">
                                     <h1 className="text-xl">CONTACT US</h1>
                                     <div className="mt-2 space-y-1">
-                                          <p>123 ABS Street, Uni 21, Bangladesh</p>
-                                          <p>+88 123456789</p>
+                                          <p>Assim, Bashdi, Fulbaria, Mymensingh</p>
+                                          <p>+88 01682247291</p>
                                           <p>Mon - Fri: 08:00 - 22:00</p>
                                           <p>Sat - Sun: 10:00 - 23:00</p>
                                     </div>
