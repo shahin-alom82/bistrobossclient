@@ -1,13 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 const RootLayout = () => {
+      const location = useLocation()
+      const noHeaderFooter = location.pathname.includes('login')
       return (
             <div className="font-bodyFont">
-                  <Header />
+                  {noHeaderFooter || <Header />}
                   <Outlet />
-                  <Footer />
+                  {noHeaderFooter || <Footer />}
             </div>
       );
 };

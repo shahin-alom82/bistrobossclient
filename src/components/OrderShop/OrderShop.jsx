@@ -48,13 +48,13 @@ const OrderShop = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
           {filteredMenu.length > 0 ? (
             filteredMenu.map((item) => (
-              <div key={item._id} className="border-2 border-gray-300 rounded-lg relative">
+              <div key={item._id} className="border-2 border-yellow-500 rounded-lg relative">
                 <img src={item.image} alt={item.name} className="w-full h-48 rounded-t-lg" />
                 <div className="py-2 px-2">
                   <h3 className="text-xl mt-2 font-medium tracking-wide">{item.name}</h3>
                   <p className="text-gray-500 mt-2 h-16">{item.recipe.slice(0, 60)}</p>
                   <button className="w-full bg-yellow-600 py-1.5 rounded-full text-white mt-1 mb-1">Add To Cart</button>
-                  <p className="text-white absolute top-2 right-2 bg-black opacity-70 px-1 rounded text-sm">${item.price}</p>
+                  <p className="text-white absolute top-2 right-2 py-0.5 bg-black opacity-70 px-1.5 rounded text-sm">${item.price}</p>
                 </div>
               </div>
             ))

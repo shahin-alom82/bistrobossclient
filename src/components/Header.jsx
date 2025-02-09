@@ -24,21 +24,23 @@ const Header = () => {
                                     ))}
                               </div>
                               {/* ------ Login Cart icons ------ */}
-                              <div className="lg:flex items-center gap-10 text-white hidden md:block">
-                                    <div className="flex items-center gap-2">
-                                          <span className="border border-white py-2 px-2 rounded-full text-white">
-                                                <FaRegUser size={25} />
-                                          </span>
-                                          <div>
-                                                <h1 className="tracking-wide">Hello, Guest</h1>
-                                                <p className="text-sm tracking-wide">Login / Register</p>
+                              <Link to={'/login'}>
+                                    <div className="lg:flex items-center gap-10 text-white hidden md:block">
+                                          <div className="flex items-center gap-2">
+                                                <span className="border border-white py-2 px-2 rounded-full text-white">
+                                                      <FaRegUser size={25} />
+                                                </span>
+                                                <div>
+                                                      <h1 className="tracking-wide">Hello, Guest</h1>
+                                                      <p className="text-sm tracking-wide">Login / Register</p>
+                                                </div>
+                                          </div>
+                                          <div className="relative ">
+                                                <BsFillCartCheckFill className="text-white" size={30} />
+                                                <span className="absolute right-1.5 text-xs bottom-[26px] text-white bg-green-600 px-1 rounded-full">0</span>
                                           </div>
                                     </div>
-                                    <div className="relative ">
-                                          <BsFillCartCheckFill className="text-white" size={30} />
-                                          <span className="absolute right-1.5 text-xs bottom-[26px] text-white bg-green-600 px-1 rounded-full">0</span>
-                                    </div>
-                              </div>
+                              </Link>
                         </div>
                   </Container>
             </div>
