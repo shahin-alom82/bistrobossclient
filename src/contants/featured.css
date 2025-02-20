@@ -1,3 +1,6 @@
 .featured-item {
       background-image: url('../assets/home/featured.jpg');
   }
+  .menu-item {
+    background-image: url('../assets/menu/menu-bg.png');
+}

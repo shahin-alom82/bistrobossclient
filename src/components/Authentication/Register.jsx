@@ -7,7 +7,6 @@ import { FaFacebookF } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 
 const Register = () => {
-      const [checked, setChecked] = useState(false);
       const [loading, setLoading] = useState(false);
       const { createUser } = useContext(AuthContext);
 
@@ -18,9 +17,8 @@ const Register = () => {
             const name = form.name.value;
             const email = form.email.value;
             const password = form.password.value;
-            const remember = form.remember.checked;
 
-            console.log(name, email, password, remember);
+            console.log(name, email, password);
 
             createUser(email, password)
                   .then((result) => {
@@ -35,7 +33,7 @@ const Register = () => {
       };
 
       return (
-            <div className="py-28">
+            <div className="py-[130px]" style={{ backgroundImage: "url('https://i.ibb.co.com/jkQMLhZ7/menu-bg.png')" }}>
                   <Helmet>
                         <title>Bistro Boss | Register</title>
                   </Helmet>
@@ -94,30 +92,12 @@ const Register = () => {
                                           name="password"
                                     />
                               </div>
-                              <div className="flex items-start mb-5">
-                                    <div className="flex items-center h-5">
-                                          <input
-                                                type="checkbox"
-                                                id="remember"
-                                                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                                                checked={checked}
-                                                onChange={() => setChecked(!checked)}
-                                                name="remember"
-                                          />
-                                    </div>
-                                    <label
-                                          htmlFor="remember"
-                                          className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                    >
-                                          Remember me
-                                    </label>
-                              </div>
+                           
                               <button
-                                    disabled={!checked || loading}
                                     type="submit"
-                                    className="bg-[#112240] w-full py-2 text-white rounded-full hover:bg-black hoverEffect disabled:bg-gray-400 disabled:cursor-not-allowed"
+                                    className="bg-[#112240] duration-300 w-full py-2 text-white rounded-full hover:bg-black hoverEffect disabled:bg-gray-400 disabled:cursor-not-allowed"
                               >
-                                    {loading ? "Processing..." : "Create Account"}
+                                    Create Account
                               </button>
                               <div className="mt-3">
                                     <p className="text-center text-sm tracking-wide">Or Login With</p>
