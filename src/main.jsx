@@ -10,6 +10,7 @@ import OrderShop from './components/OrderShop/OrderShop.jsx'
 import Login from './components/Authentication/Login.jsx'
 import Register from './components/Authentication/Register.jsx'
 import AuthProvider from './firebase/AuthProvider.jsx'
+import Contact from './components/Contact.jsx'
 const router = createBrowserRouter([{
   path: "/",
   element: <RootLayout />,
@@ -33,6 +34,10 @@ const router = createBrowserRouter([{
     {
       path: "/register",
       element: <Register />
+    },
+    {
+      path: "/contact",
+      element: <Contact />
     }
   ]
 }])

@@ -28,9 +28,9 @@ const Login = () => {
 
       return (
             <div className="py-[165px]" style={{ backgroundImage: "url('https://i.ibb.co.com/jkQMLhZ7/menu-bg.png')" }}>
-                     <Helmet>
-                                          <title>Bistro Boss | Login</title>
-                                    </Helmet>
+                  <Helmet>
+                        <title>Bistro Boss | Login</title>
+                  </Helmet>
                   <Container>
                         <form onSubmit={handleLogin} className="max-w-sm mx-auto border-b-4 border-t border-l border-r border-gray-400 px-6 py-4">
                               <h1 className="text-xl underline underline-offset-[5px]">Login Page</h1>
