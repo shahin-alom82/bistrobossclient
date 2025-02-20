@@ -9,6 +9,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import OrderShop from './components/OrderShop/OrderShop.jsx'
 import Login from './components/Authentication/Login.jsx'
 import Register from './components/Authentication/Register.jsx'
+import AuthProvider from './firebase/AuthProvider.jsx'
 const router = createBrowserRouter([{
   path: "/",
   element: <RootLayout />,
@@ -38,8 +39,10 @@ const router = createBrowserRouter([{
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HelmetProvider>
-      <RouterProvider router={router} />
-    </HelmetProvider>
+    <AuthProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
+    </AuthProvider>
   </StrictMode>,
 )

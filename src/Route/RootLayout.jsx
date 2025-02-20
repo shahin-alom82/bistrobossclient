@@ -4,7 +4,7 @@ import Header from "../components/Header";
 
 const RootLayout = () => {
       const location = useLocation()
-      const noHeaderFooter = location.pathname.includes('login')
+      const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes("register");
       return (
             <div className="font-bodyFont">
                   {noHeaderFooter || <Header />}
