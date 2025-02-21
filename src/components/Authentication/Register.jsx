@@ -1,14 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import Container from "../Container";
 import { AuthContext } from "../../firebase/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const Register = () => {
       const [loading, setLoading] = useState(false);
       const { createUser } = useContext(AuthContext);
+
+      // Replace
+      const from = location.state?.from?.pathName || "/"
+      const Navigate = useNavigate()
+
 
       const handleRegister = (event) => {
             event.preventDefault();
@@ -23,6 +29,14 @@ const Register = () => {
             createUser(email, password)
                   .then((result) => {
                         console.log(result.user);
+                        Swal.fire({
+                              position: "top-center",
+                              icon: "success",
+                              title: "Register Successfully!",
+                              showConfirmButton: false,
+                              timer: 1500
+                        });
+                        Navigate(from, { replace: true })
                         setLoading(false);
                         form.reset()
                   })
@@ -92,7 +106,7 @@ const Register = () => {
                                           name="password"
                                     />
                               </div>
-                           
+
                               <button
                                     type="submit"
                                     className="bg-[#112240] duration-300 w-full py-2 text-white rounded-full hover:bg-black hoverEffect disabled:bg-gray-400 disabled:cursor-not-allowed"

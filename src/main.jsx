@@ -11,6 +11,7 @@ import Login from './components/Authentication/Login.jsx'
 import Register from './components/Authentication/Register.jsx'
 import AuthProvider from './firebase/AuthProvider.jsx'
 import Contact from './components/Contact.jsx'
+import PrivateRoute from './components/Authentication/PrivateRoute.jsx'
 const router = createBrowserRouter([{
   path: "/",
   element: <RootLayout />,
@@ -21,11 +22,11 @@ const router = createBrowserRouter([{
     },
     {
       path: "/menu",
-      element: <OurMenu />
+      element: <PrivateRoute><OurMenu /></PrivateRoute>
     },
     {
       path: "/order",
-      element: <OrderShop />
+      element: <PrivateRoute><OrderShop /></PrivateRoute>
     },
     {
       path: "/login",

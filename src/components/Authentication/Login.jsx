@@ -1,27 +1,43 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "../Container";
 import { AuthContext } from "../../firebase/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const Login = () => {
 
+      // Replace
+      const location = useLocation()
+      const navigate = useNavigate()
+      const from = location.state?.from?.pathname || "/"
 
       const { loginUser } = useContext(AuthContext)
 
       const handleLogin = event => {
+
             event.preventDefault();
             const form = event.target;
             const email = form.email.value;
             const password = form.password.value;
             loginUser(email, password)
+
                   .then(result => {
                         const user = result.user
                         console.log(user)
+                        Swal.fire({
+                              position: "top-center",
+                              icon: "success",
+                              title: "Login Successfully!",
+                              showConfirmButton: false,
+                              timer: 1500
+                        });
+                        navigate(from, { replace: true });
                         form.reset()
                   })
+                  .catch(error => console.log(error))
       }
 
 

@@ -12,7 +12,6 @@ const Header = () => {
       const handleLogout = async () => {
             try {
                   await logOut();
-                  console.log("User logged out successfully");
             } catch (error) {
                   console.error("Logout error:", error);
             }
@@ -55,7 +54,7 @@ const Header = () => {
                                                       className="text-white rounded-md text-[18px]">
                                                       Logout
                                                 </button>
-                                                <MdLogout size={20}  className="text-red-500"/>
+                                                <MdLogout size={20} className="text-red-500" />
                                           </div>
                                     ) : (
                                           <Link to={'/login'}>
