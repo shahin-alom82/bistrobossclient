@@ -1,18 +1,42 @@
 import { FaRegUser } from "react-icons/fa";
-import { nav } from "../contants";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Container from "./Container";
+import { useContext } from "react";
+import { AuthContext } from "../firebase/AuthProvider";
+import { MdLogout } from "react-icons/md";
 
 const Header = () => {
+      const { user, logOut } = useContext(AuthContext);
+
+      const handleLogout = async () => {
+            try {
+                  await logOut();
+                  console.log("User logged out successfully");
+            } catch (error) {
+                  console.error("Logout error:", error);
+            }
+      };
+
+      const nav = [
+            { path: "/", title: "Home" },
+            { path: "/menu", title: "Our Menu" },
+            { path: "/order", title: "Our Shop" },
+            { path: "/contact", title: "Contact Us" },
+            { path: "/dashboard", title: "Dashboard" },
+      ];
+
       return (
             <div>
-                  <Container className="lg:fixed top-0 left-0 right-0 z-10 opacity-70 text-white  bg-black">
+                  <Container className="lg:fixed top-0 left-0 right-0 z-10 opacity-70 text-white bg-black">
                         <div className="flex items-center justify-between py-5 lg:px-7">
                               {/* ---------Logo ------------ */}
                               <Link to={"/"}>
-                                    <h1 className="lg:text-3xl text-xl font-semibold uppercase tracking-wide hover:text-gray-300 duration-300 cursor-pointer">Bistro Boss</h1>
+                                    <h1 className="lg:text-3xl text-xl font-semibold uppercase tracking-wide hover:text-gray-300 duration-300 cursor-pointer">
+                                          Bistro Boss
+                                    </h1>
                               </Link>
+
                               {/* ---------- Nav ----------- */}
                               <div className="lg:flex items-center gap-6 text-white hidden md:block">
                                     {nav.map((item, index) => (
@@ -23,24 +47,34 @@ const Header = () => {
                                           </div>
                                     ))}
                               </div>
-                              {/* ------ Login Cart icons ------ */}
-                              <Link to={'/login'}>
-                                    <div className="lg:flex items-center gap-10 text-white hidden md:block">
-                                          <div className="flex items-center gap-2">
-                                                <span className="border border-white py-2 px-2 rounded-full text-white">
-                                                      <FaRegUser size={25} />
-                                                </span>
-                                                <div>
-                                                      <h1 className="tracking-wide">Hello, Guest</h1>
-                                                      <p className="text-sm tracking-wide">Login / Register</p>
+                              {/* ------ Login & Cart icons ------ */}
+                              <div className="lg:flex items-center gap-16 text-white hidden md:block">
+                                    {user ? (
+                                          <div onClick={handleLogout} className="flex items-center gap-2">
+                                                <button
+                                                      className="text-white rounded-md text-[18px]">
+                                                      Logout
+                                                </button>
+                                                <MdLogout size={20}  className="text-red-500"/>
+                                          </div>
+                                    ) : (
+                                          <Link to={'/login'}>
+                                                <div className="flex items-center gap-2">
+                                                      <span className="border border-white py-2 px-2 rounded-full text-white">
+                                                            <FaRegUser size={25} />
+                                                      </span>
+                                                      <div>
+                                                            <h1 className="tracking-wide">Hello, Guest</h1>
+                                                            <p className="text-sm tracking-wide">Login / Register</p>
+                                                      </div>
                                                 </div>
-                                          </div>
-                                          <div className="relative ">
-                                                <BsFillCartCheckFill className="text-white" size={30} />
-                                                <span className="absolute right-1.5 text-xs bottom-[26px] text-white bg-green-600 px-1 rounded-full">0</span>
-                                          </div>
+                                          </Link>
+                                    )}
+                                    <div className="relative">
+                                          <BsFillCartCheckFill className="text-white" size={30} />
+                                          <span className="absolute right-1.5 text-xs bottom-[26px] text-white bg-green-600 px-1 rounded-full">0</span>
                                     </div>
-                              </Link>
+                              </div>
                         </div>
                   </Container>
             </div>
