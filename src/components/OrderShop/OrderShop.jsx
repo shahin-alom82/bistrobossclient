@@ -20,6 +20,9 @@ const OrderShop = () => {
 
   const filteredMenu = menu?.filter((item) => item?.category === selectedCategory) || [];
 
+  const handleAddToCart = food => {
+    console.log('Add Cart', food)
+  }
 
   return (
     <div>
@@ -53,7 +56,7 @@ const OrderShop = () => {
                 <div className="py-2 px-2">
                   <h3 className="text-xl mt-2 font-medium tracking-wide">{item.name}</h3>
                   <p className="text-gray-500 mt-2 h-16">{item.recipe.slice(0, 60)}</p>
-                  <button className="w-full bg-yellow-600 py-1.5 rounded-full text-white mt-1 mb-1">Add To Cart</button>
+                  <button onClick={() => handleAddToCart(item)} className="w-full bg-yellow-600 py-1.5 rounded-full text-white mt-1 mb-1">Add To Cart</button>
                   <p className="text-white absolute top-2 right-2 py-0.5 bg-black opacity-70 px-1.5 rounded text-sm">${item.price}</p>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import SectionTitle from "../contants/SectionTitle";
 import featuredImg from "../assets/home/featured.jpg"
 import "../contants/featured.css"
 import Container from "./Container";
+
 const Featured = () => {
       return (
             <Container>

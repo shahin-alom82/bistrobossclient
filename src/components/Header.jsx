@@ -51,7 +51,7 @@ const Header = () => {
                                     {user ? (
                                           <div onClick={handleLogout} className="flex items-center gap-2">
                                                 <button
-                                                      className="text-white rounded-md text-[18px]">
+                                                      className="text-white hover:text-rose-500 duration-700 rounded-md text-[18px]">
                                                       Logout
                                                 </button>
                                                 <MdLogout size={20} className="text-red-500" />
