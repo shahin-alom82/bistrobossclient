@@ -5,9 +5,12 @@ import Container from "./Container";
 import { useContext } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
 import { MdLogout } from "react-icons/md";
+import { nav } from "../contants";
+import useCart from "../contants/useCart";
 
 const Header = () => {
       const { user, logOut } = useContext(AuthContext);
+      const [cart] = useCart()
 
       const handleLogout = async () => {
             try {
@@ -17,13 +20,7 @@ const Header = () => {
             }
       };
 
-      const nav = [
-            { path: "/", title: "Home" },
-            { path: "/menu", title: "Our Menu" },
-            { path: "/order", title: "Our Shop" },
-            { path: "/contact", title: "Contact Us" },
-            { path: "/dashboard", title: "Dashboard" },
-      ];
+
 
       return (
             <div>
@@ -69,10 +66,12 @@ const Header = () => {
                                                 </div>
                                           </Link>
                                     )}
-                                    <div className="relative">
-                                          <BsFillCartCheckFill className="text-white" size={30} />
-                                          <span className="absolute right-1.5 text-xs bottom-[26px] text-white bg-green-600 px-1 rounded-full">0</span>
-                                    </div>
+                                    <Link to={'/dashboard/cart'}>
+                                          <div className="relative">
+                                                <BsFillCartCheckFill className="text-white" size={30} />
+                                                <span className="absolute right-1 text-sm bottom-[26px] text-white px-1 rounded-full">{cart?.length}</span>
+                                          </div>
+                                    </Link>
                               </div>
                         </div>
                   </Container>

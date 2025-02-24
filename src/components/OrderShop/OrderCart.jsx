@@ -2,12 +2,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../contants/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../contants/useAxiosSecure";
+import useCart from "../../contants/useCart";
 
 const OrderCart = ({ item }) => {
       const { user } = useAuth()
       const navigate = useNavigate()
       const location = useLocation()
       const axiosSecure = useAxiosSecure()
+      const [, refetch] = useCart()
       const handleAddToCart = food => {
             if (user && user?.email) {
                   const cartItem = {
@@ -27,6 +29,8 @@ const OrderCart = ({ item }) => {
                                           showConfirmButton: false,
                                           timer: 1500
                                     });
+                                    // refetch Cart
+                                    refetch()
                               }
                         })
             }
@@ -48,7 +52,7 @@ const OrderCart = ({ item }) => {
       }
       return (
             <div>
-                  <div className="border-2 border-yellow-500 rounded-lg relative">
+                  <div className="border-2 border-gray-300 rounded-lg relative">
                         <img src={item.image} alt={item.name} className="w-full h-48 rounded-t-lg" />
                         <div className="py-2 px-2">
                               <h3 className="text-xl mt-2 font-medium tracking-wide">{item.name}</h3>
