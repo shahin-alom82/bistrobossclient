@@ -38,9 +38,9 @@ const Cart = () => {
             <div>
                   <div className="flex flex-col lg:flex-row justify-between items-center text-xl font-medium">
                         <h1>Total Item : {cart?.length}</h1>
-                        <div className="flex  flex-col lg:flex-row items-center gap-20">
-                              <h1 className="mt-4 lg:mt-0">Total Price : {totalprice.toFixed(2)}</h1>
-                              <button className="bg-green-700 text-sm py-1 px-3 text-white">Pay Now</button>
+                        <div className="flex  flex-col lg:flex-row items-center lg:gap-20 gap-6">
+                              <h1 className="mt-4 lg:mt-0">Total Price : ${totalprice.toFixed(2)}</h1>
+                              <button className="bg-green-700 text-sm py-1.5 px-3 text-white">Pay Now</button>
                         </div>
                   </div>
 
@@ -50,18 +50,18 @@ const Cart = () => {
                               <p>image</p>
                               <p>Name</p>
                               <p>Price</p>
-                              <p>Delete</p>
-                              <p>Edit</p>
+                              <p className="pl-1">Delete</p>
+                              <p className="pl-4">Edit</p>
                         </div>
                         <div>
                               {/* overflow-scroll h-80 */}
                               {cart.map((item) => (
                                     <div key={item?._id}>
-                                          <div className="w-full grid grid-cols-1 md:grid-cols-5 items-center  gap-6 py-4">
+                                          <div className="w-full grid grid-cols-1 md:grid-cols-5 items-center  gap-6 py-4 border lg:border-none mt-2 lg:mt-0 px-4 lg:px-0">
 
                                                 <img src={item?.image} alt="img" className="h-20" />
                                                 <p className="text-lg tracking-wide text-gray-800 font-medium">{item?.name}</p>
-                                                <p className="text-lg tracking-wide text-gray-800 font-medium">{item?.price}</p>
+                                                <p className="text-lg tracking-wide text-gray-800 font-medium">${item?.price}</p>
                                                 <span onClick={() => handleDelete(item?._id)} className="cursor-pointer duration-300 text-red-600"><RiDeleteBinLine size={20} /></span>
                                                 <span className="cursor-pointer text-blue-600 duration-300"> <FiEdit size={20} className="text-start" /></span>
                                           </div>

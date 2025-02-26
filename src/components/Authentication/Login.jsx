@@ -43,7 +43,7 @@ const Login = () => {
 
 
       return (
-            <div className="py-[165px]" style={{ backgroundImage: "url('https://i.ibb.co.com/jkQMLhZ7/menu-bg.png')" }}>
+            <div className="py-[165px] md:py-[350px] lg:py-[165px]" style={{ backgroundImage: "url('https://i.ibb.co.com/jkQMLhZ7/menu-bg.png')" }}>
                   <Helmet>
                         <title>Bistro Boss | Login</title>
                   </Helmet>
