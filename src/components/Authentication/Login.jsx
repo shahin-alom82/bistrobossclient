@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin";
 
 const Login = () => {
 
@@ -47,8 +48,8 @@ const Login = () => {
                   <Helmet>
                         <title>Bistro Boss | Login</title>
                   </Helmet>
-                  <Container>
-                        <form onSubmit={handleLogin} className="max-w-sm mx-auto border-b-4 border-t border-l border-r border-gray-400 px-6 py-4">
+                  <Container className="max-w-sm mx-auto border-b-4 border-t border-l border-r border-gray-400 py-4">
+                        <form onSubmit={handleLogin} className="px-5">
                               <h1 className="text-xl underline underline-offset-[5px]">Login Page</h1>
 
                               <div className="mb-5 mt-4">
@@ -83,12 +84,12 @@ const Login = () => {
                               >
                                     Login
                               </button>
+
+
+                        </form>
+                        <div>
                               <div className="mt-3">
-                                    <p className="text-center text-sm tracking-wide">Or Login With</p>
-                                    <div className="flex items-center gap-4 justify-center mt-2">
-                                          <FcGoogle size={25} />
-                                          <FaFacebookF size={20} className="text-blue-700" />
-                                    </div>
+                                    <SocialLogin />
                               </div>
 
                               <p className="mt-2 text-center text-sm tracking-wide">
@@ -97,8 +98,7 @@ const Login = () => {
                                           <span className="underline underline-offset-[5px]">Sign Up</span>
                                     </Link>
                               </p>
-
-                        </form>
+                        </div>
                   </Container>
             </div>
       );

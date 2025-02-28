@@ -1,15 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import Container from "../Container";
-import { AuthContext } from "../../firebase/AuthProvider";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
+import { AuthContext } from "../../firebase/AuthProvider";;
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../contants/useAxiosPublic";
+import SocialLogin from "../SocialLogin";
 
 const Register = () => {
       const [loading, setLoading] = useState(false);
       const { createUser } = useContext(AuthContext);
+
+
+      // Public Auth
+      const axiosPublic = useAxiosPublic()
+  
 
       // Replace
       const from = location.state?.from?.pathName || "/"
@@ -28,17 +33,26 @@ const Register = () => {
 
             createUser(email, password)
                   .then((result) => {
-                        console.log(result.user);
-                        Swal.fire({
-                              position: "top-center",
-                              icon: "success",
-                              title: "Register Successfully!",
-                              showConfirmButton: false,
-                              timer: 1500
-                        });
-                        Navigate(from, { replace: true })
-                        setLoading(false);
-                        form.reset()
+                        // Public Auth
+                        const userInfo = {
+                              name: name,
+                              email: result.user.email,
+                        }
+                        axiosPublic.post('/users', userInfo)
+                              .then(res => {
+                                    if (res.data.insertedId) {
+                                          Swal.fire({
+                                                position: "top-center",
+                                                icon: "success",
+                                                title: "Register Successfully!",
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                          });
+                                          Navigate(from, { replace: true })
+                                          setLoading(false);
+                                          form.reset()
+                                    }
+                              })
                   })
                   .catch((error) => {
                         console.error(error);
@@ -51,10 +65,11 @@ const Register = () => {
                   <Helmet>
                         <title>Bistro Boss | Register</title>
                   </Helmet>
-                  <Container>
+                  <Container className="max-w-sm mx-auto border-b-4 border-t border-l border-r border-gray-400 py-4">
                         <form
+                              className="px-5"
                               onSubmit={handleRegister}
-                              className="max-w-sm mx-auto border-b-4 border-t border-l border-r border-gray-400 px-6 py-4"
+
                         >
                               <h1 className="text-xl underline underline-offset-[5px]">
                                     Sign up page
@@ -113,12 +128,10 @@ const Register = () => {
                               >
                                     Create Account
                               </button>
+                        </form>
+                        <div>
                               <div className="mt-3">
-                                    <p className="text-center text-sm tracking-wide">Or Login With</p>
-                                    <div className="flex items-center gap-4 justify-center mt-2">
-                                          <FcGoogle size={25} />
-                                          <FaFacebookF size={20} className="text-blue-700" />
-                                    </div>
+                                    <SocialLogin />
                               </div>
                               <p className="mt-2 text-center text-sm tracking-wide">
                                     Already have an Account?{" "}
@@ -126,7 +139,7 @@ const Register = () => {
                                           <span className="underline underline-offset-[5px]">Login</span>
                                     </Link>
                               </p>
-                        </form>
+                        </div>
                   </Container>
             </div>
       );
