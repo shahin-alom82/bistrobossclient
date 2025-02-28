@@ -15,6 +15,7 @@ import PrivateRoute from './components/Authentication/PrivateRoute.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Dashboard from './dashboard/Dashboard.jsx'
 import Cart from './dashboard/Cart.jsx'
+import AllUsers from './dashboard/AllUsers.jsx'
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([{
@@ -55,7 +56,12 @@ const router = createBrowserRouter([{
     {
       path: 'cart',
       element: <Cart />
-    }
+    },
+    // Admin Route 
+    {
+      path: 'allusers',
+      element: <AllUsers />
+    },
   ]
 }
 
