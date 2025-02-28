@@ -1,15 +1,26 @@
 import useAuth from "../contants/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa6";
+import useAxiosPublic from "../contants/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
       const { googleLogin } = useAuth()
-
-
+      const axiosPublic = useAxiosPublic()
+      const navigate = useNavigate()
       const handleGoogle = () => {
             googleLogin()
                   .then(result => {
-                        console.log('usersssssssss', result.user)
+                        console.log('user', result.user)
+                        const userInfo = {
+                              name: result.user?.displayName,
+                              email: result.user?.email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                              .then(res => {
+                                    console.log(res)
+                                    navigate('/')
+                              })
                   })
       }
       return (
