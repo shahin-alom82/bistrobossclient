@@ -83,11 +83,11 @@ const AllUsers = () => {
                                                 <div className="w-full grid grid-cols-1 md:grid-cols-5 items-center  gap-6 py-4 border lg:border-none mt-2 lg:mt-0 px-4 lg:px-0">
 
                                                       <p className="ml-6 text-lg hidden md:block">{index + 1}</p>
-                                                      <p className="text-lg tracking-wide text-gray-800 font-medium">{item?.name}</p>
-                                                      <p className="text-lg tracking-wide text-gray-800 font-medium">{item?.email}</p>
+                                                      <p className="lg:text-lg text-[15px] tracking-wide text-gray-800 font-medium">{item?.name}</p>
+                                                      <p className="lg:text-lg text-[13px] tracking-wide text-gray-800 font-medium">{item?.email}</p>
                                                       <span onClick={() => handleDelete(item?._id)} className="cursor-pointer duration-300 text-red-600 lg:ml-24"><RiDeleteBinLine size={20} /></span>
                                                       {
-                                                            item.role === "admin" ? "Admin" : <span onClick={() => handleMakeAdmin(item)} className="cursor-pointer text-blue-600 duration-300 lg:ml-20"> <FiEdit size={20} className="text-start" /></span>
+                                                            item.role === "admin" ? <span className="lg:ml-[74px] lg:text-lg text-[15px]">Admin</span> : <span onClick={() => handleMakeAdmin(item)} className="cursor-pointer text-blue-600 duration-300 lg:ml-20"> <FiEdit size={20} className="text-start" /></span>
                                                       }
                                                 </div>
                                           </div>
