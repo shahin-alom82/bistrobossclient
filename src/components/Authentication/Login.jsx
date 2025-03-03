@@ -2,8 +2,6 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "../Container";
 import { AuthContext } from "../../firebase/AuthProvider";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin";

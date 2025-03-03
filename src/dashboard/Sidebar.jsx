@@ -8,11 +8,12 @@ import { NavLink } from "react-router-dom";
 import useCart from "../contants/useCart";
 import { FaBook, FaList, FaUtensils } from "react-icons/fa6";
 import { HiMiniUserGroup } from "react-icons/hi2";
+import useAdmin from "../contants/useAdmin";
 
 const Sidebar = () => {
       const [cart] = useCart()
 
-      const isAdmin = true
+      const [isAdmin] = useAdmin()
       return (
             <div>
                   <p className="text-[16px] tracking-wide font-semibold uppercase text-gray-800 hidden md:block">Well Come To Dashboard</p>
