@@ -1,13 +1,11 @@
-import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../../firebase/AuthProvider";
-
+import useAuth from "../../contants/useAuth";
 
 
 const PrivateRoute = ({ children }) => {
       const location = useLocation()
 
-      const { user, loading } = useContext(AuthContext)
+      const { user, loading } = useAuth()
       if (loading) {
             return <span className="loading loading-dots loading-lg mx-auto mt-[200px] lg:ml-[700px] ml-32"></span>;
       }
