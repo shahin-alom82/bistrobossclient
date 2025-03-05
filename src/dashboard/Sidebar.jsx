@@ -12,7 +12,6 @@ import useAdmin from "../contants/useAdmin";
 
 const Sidebar = () => {
       const [cart] = useCart()
-
       const [isAdmin] = useAdmin()
       return (
             <div>
