@@ -1,24 +1,26 @@
-import { useFormAction } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const AddItem = () => {
-      // const { register, handleSubmit } = useFormAction()
-      // const onSubmit = (data) => {
-      //       console.log(data)
-      // }
+      const { register, handleSubmit } = useForm(); 
+      const onSubmit = (data) => {
+            console.log(data);
+      };
+
       return (
             <div>
-                  <h>Add Item</h>
+                  <h1>Add Item</h1> 
+
                   <div>
-                        {/* <form onSubmit={handleSubmit(onSubmit)}>
-                              <input {...register("firstName")} />
-                              <select {...register("gender")}>
-                                    <option value="female">female</option>
-                                    <option value="male">male</option>
-                                    <option value="other">other</option>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                              <input {...register("Name")} placeholder="First Name" />
+                              <select {...register("Category")}>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="other">Other</option>
                               </select>
-                              <input type="submit" />
-                        </form> */}
-                        
+
+                              <input type="submit" value="Submit" />
+                        </form>
                   </div>
             </div>
       );
