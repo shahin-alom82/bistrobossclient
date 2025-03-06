@@ -5,7 +5,7 @@ import SectionTitle from "../contants/SectionTitle";
 const AddItem = () => {
       const { register, handleSubmit } = useForm();
       const onSubmit = (data) => {
-            console.log("Shahin data", data);
+            console.log("data", data);
       };
 
       return (
