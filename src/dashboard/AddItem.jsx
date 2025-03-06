@@ -5,7 +5,7 @@ import SectionTitle from "../contants/SectionTitle";
 const AddItem = () => {
       const { register, handleSubmit } = useForm();
       const onSubmit = (data) => {
-            console.log(data);
+            console.log("Shahin data", data);
       };
 
       return (
@@ -79,6 +79,7 @@ const AddItem = () => {
                                     <label className="block text-gray-700 font-medium">Choose a File</label>
                                     <input
                                           {...register("image")}
+                                          required
                                           type="file"
                                           className="w-full outline-none placeholder:text-gray-700 rounded mt-2"
                                     />
