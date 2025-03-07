@@ -64,6 +64,7 @@ const router = createBrowserRouter([{
       path: "additems",
       element: <AdminRoute><AddItem /></AdminRoute>
     },
+
     {
       path: 'allusers',
       element: <AdminRoute><PrivateRoute><AllUsers /></PrivateRoute></AdminRoute>
