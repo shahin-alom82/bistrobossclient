@@ -1,11 +1,28 @@
 import { useForm } from "react-hook-form";
 import { FaUtensils } from "react-icons/fa";
 import SectionTitle from "../contants/SectionTitle";
+import useAxiosPublic from "../contants/useAxiosPublic";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItem = () => {
+      const axiosPublic = useAxiosPublic()
       const { register, handleSubmit } = useForm();
-      const onSubmit = (data) => {
-            console.log("data", data);
+
+
+      const onSubmit = async (data) => {
+            console.log('data', data)
+            const imageFile = { image: data.image[0] }
+            const res = await axiosPublic.post(image_hosting_api, imageFile, {
+                  headers: {
+                        'content-type': 'multipart/form-data'
+                  }
+            });
+            if (res.data.success) {
+
+            }
+            console.log("res", res.data);
       };
 
       return (
@@ -33,12 +50,12 @@ const AddItem = () => {
                                     {/* Category Select */}
                                     <div className="w-full md:w-1/2">
                                           <label className="block text-gray-700 font-medium">Category*</label>
-                                          <select
+                                          <select defaultValue={'default'}
                                                 {...register("category")}
                                                 className="w-full px-3 py-2.5 border mt-2 border-gray-400 rounded placeholder:text-gray-700 text-gray-800 bg-white "
                                                 required
                                           >
-                                                <option value="" disabled selected >
+                                                <option value="default" disabled >
                                                       Select a Category
                                                 </option>
                                                 <option value="salad">Salad</option>
