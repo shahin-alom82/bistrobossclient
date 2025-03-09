@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../contants/useAxiosSecure";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { FiEdit } from "react-icons/fi";
 import Swal from "sweetalert2";
+import { GrUserAdmin } from "react-icons/gr";
 
 const AllUsers = () => {
       const axiosSecure = useAxiosSecure()
@@ -64,7 +64,7 @@ const AllUsers = () => {
             <div>
                   <div>
                         <div className="flex flex-col lg:flex-row justify-between items-center text-xl font-medium">
-                              <h1>Total User : {users?.length}</h1>
+                              <h1 className="text-lg text-yellow-600 tracking-wide">Total User : {users?.length}</h1>
                         </div>
 
                         <div className="mt-10">
@@ -85,12 +85,13 @@ const AllUsers = () => {
                                                       <p className="ml-6 text-lg hidden md:block">{index + 1}</p>
                                                       <p className="lg:text-lg text-[15px] tracking-wide text-gray-800 font-medium">{item?.name}</p>
                                                       <p className="lg:text-lg text-[13px] tracking-wide text-gray-800 font-medium">{item?.email}</p>
-                                                      <span onClick={() => handleDelete(item?._id)} className="cursor-pointer duration-300 text-red-600 lg:ml-24"><RiDeleteBinLine size={20} /></span>
+                                                      <span onClick={() => handleDelete(item?._id)} className="cursor-pointer duration-300 text-red-600 lg:ml-24"><RiDeleteBinLine size={25} /></span>
                                                       {
-                                                            item.role === "admin" ? <span className="lg:ml-[74px] lg:text-lg text-[15px]">Admin</span> : <span onClick={() => handleMakeAdmin(item)} className="cursor-pointer text-blue-600 duration-300 lg:ml-20"> <FiEdit size={20} className="text-start" /></span>
+                                                            item.role === "admin" ? <span className="lg:ml-[74px] lg:text-lg text-[15px]">Admin</span> : <span onClick={() => handleMakeAdmin(item)} className="cursor-pointer text-blue-600 duration-300 lg:ml-20"> <GrUserAdmin size={25} className="text-start" /></span>
                                                       }
                                                 </div>
                                           </div>
+
                                     ))}
                               </div>
                         </div>

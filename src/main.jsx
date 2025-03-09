@@ -18,6 +18,8 @@ import Cart from './dashboard/Cart.jsx'
 import AllUsers from './dashboard/AllUsers.jsx'
 import AddItem from './dashboard/AddItem.jsx'
 import AdminRoute from './components/Authentication/AdminRoute.jsx'
+import ManageItem from './dashboard/ManageItem.jsx'
+import UpdateItem from './dashboard/UpdateItem.jsx'
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([{
@@ -68,6 +70,15 @@ const router = createBrowserRouter([{
     {
       path: 'allusers',
       element: <AdminRoute><PrivateRoute><AllUsers /></PrivateRoute></AdminRoute>
+    },
+    {
+      path: 'manageitems',
+      element: <AdminRoute><PrivateRoute><ManageItem /></PrivateRoute></AdminRoute>
+    },
+    {
+      path: 'update/:id',
+      element: <AdminRoute><UpdateItem /></AdminRoute>,
+      loader: ({ params }) => fetch(`http://localhost:5000/menu/${params.id}`),
     },
   ]
 }

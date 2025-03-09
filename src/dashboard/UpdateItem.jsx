@@ -1,27 +1,29 @@
 import { useForm } from "react-hook-form";
-import { FaUtensils } from "react-icons/fa";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../contants/useAxiosPublic";
 import useAxiosSecure from "../contants/useAxiosSecure";
+import { FaUtensils } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddItem = () => {
-      
-      const axiosPublic = useAxiosPublic()
-      const axiosSecure = useAxiosSecure()
 
-      const { register, handleSubmit ,reset} = useForm();
+const UpdateItem = () => {
 
-
+      const { name, category, recipe, price, _id } = useLoaderData();
+      console.log('name , category, recipe', useLoaderData)
+      const navigate = useNavigate();
+      const { register, handleSubmit } = useForm();
+      const axiosPublic = useAxiosPublic();
+      const axiosSecure = useAxiosSecure();
       const onSubmit = async (data) => {
-            console.log('data', data)
-            const imageFile = { image: data.image[0] }
+            console.log('dacnhahncadncadn', data);
+            const imageFile = { image: data.image[0] };
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
                   headers: {
-                        'content-type': 'multipart/form-data'
-                  }
+                        "content-type": "multipart/form-data",
+                  },
             });
             if (res.data.success) {
                   const menuItem = {
@@ -29,30 +31,29 @@ const AddItem = () => {
                         category: data.category,
                         price: parseFloat(data.price),
                         recipe: data.recipe,
-                        image: res.data.data.display_url
-                  }
-                  const menuRes = await axiosSecure.post('/menu', menuItem);
-                  if (menuRes.data.insertedId) {
-                        reset()
+                        image: res.data.data.display_url,
+                  };
+                  const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
+                  console.log('data', menuRes.data);
+                  if (menuRes.data.modifiedCount > 0) {
                         Swal.fire({
-                              position: "top-center",
+                              position: "top-end",
                               icon: "success",
-                              title: `${data?.name} Added Successfully!`,
+                              title: `${data.name} is updated to the menu.`,
                               showConfirmButton: false,
-                              timer: 1500
+                              timer: 1500,
                         });
+                        navigate("/dashboard/manageitems");
                   }
-                  console.log(menuRes.data)
-
             }
-            console.log("res", res.data);
+            console.log("with image url", res.data);
       };
 
       return (
             <div className="px-4 sm:px-6 lg:px-8">
                   <div className="mt-10 lg:max-w-screen-md lg:mx-auto">
                         <div className="hidden md:block">
-                              <h1 className="text-xl text-yellow-600">--- Add item ---</h1>
+                              <h1 className="text-xl text-yellow-600">--- Update Menu item ---</h1>
                         </div>
                         <form
                               className="mt-10 flex flex-col gap-4"
@@ -65,6 +66,7 @@ const AddItem = () => {
                                           {...register("name")}
                                           className="w-full px-3 py-2 border border-gray-400 outline-none placeholder:text-gray-700 rounded mt-2"
                                           placeholder="Enter item name"
+                                          defaultValue={name}
                                           required
                                     />
                               </div>
@@ -73,7 +75,7 @@ const AddItem = () => {
                                     {/* Category Select */}
                                     <div className="w-full md:w-1/2">
                                           <label className="block text-gray-700 font-medium">Category*</label>
-                                          <select defaultValue={'default'}
+                                          <select defaultValue={category}
                                                 {...register("category")}
                                                 className="w-full px-3 py-2.5 border mt-2 border-gray-400 rounded placeholder:text-gray-700 text-gray-800 bg-white "
                                                 required
@@ -97,6 +99,7 @@ const AddItem = () => {
                                                 type="number"
                                                 className="w-full px-3 py-2 border border-gray-400 outline-none placeholder:text-gray-700 text-gray-700 rounded mt-2"
                                                 placeholder="Enter price"
+                                                defaultValue={price}
                                                 required
                                           />
                                     </div>
@@ -110,6 +113,7 @@ const AddItem = () => {
                                           className="w-full px-3 py-2 border border-gray-400 outline-none placeholder:text-gray-700 rounded mt-2"
                                           rows="3"
                                           placeholder="Enter recipe details"
+                                          defaultValue={recipe}
                                           required
                                     ></textarea>
                               </div>
@@ -128,10 +132,10 @@ const AddItem = () => {
                               {/* Submit Button */}
                               <button
                                     type="submit"
-                                    className="mt-2 w-32 bg-yellow-600 text-white rounded py-1 px-4 flex items-center gap-2"
+                                    className="mt-2 w-48 bg-yellow-600 text-white rounded py-2 px-4 flex items-center gap-2"
                               >
                                     <FaUtensils size={13} />
-                                    Add Item
+                                    Update Menu Item
                               </button>
                         </form>
                   </div>
@@ -139,4 +143,4 @@ const AddItem = () => {
       );
 };
 
-export default AddItem;
+export default UpdateItem;

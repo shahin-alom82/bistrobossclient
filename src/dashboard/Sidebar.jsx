@@ -13,6 +13,7 @@ import useAdmin from "../contants/useAdmin";
 const Sidebar = () => {
       const [cart] = useCart()
       const [isAdmin] = useAdmin()
+
       return (
             <div>
                   <p className="text-[16px] tracking-wide font-semibold uppercase text-gray-800 hidden md:block">Well Come To Dashboard</p>
@@ -38,12 +39,7 @@ const Sidebar = () => {
                                                       <span><FaList size={20} /></span>
                                                       <p className="hidden md:block text-[18px] tracking-wide font-medium">Manage Items</p>
                                                 </NavLink>
-                                                {/* Manage Bookings */}
-                                                <NavLink to={"/dashboard/bookings"} className={"flex  items-center gap-4"}>
-                                                      <span><FaBook size={20} /></span>
-                                                      <p className="hidden md:block text-[18px] tracking-wide font-medium">Manage Bookings</p>
-                                                </NavLink>
-                                                {/* Manage Bookings */}
+                                                {/* All Users */}
                                                 <NavLink to={"/dashboard/allusers"} className={"flex  items-center gap-4"}>
                                                       <span><HiMiniUserGroup size={20} /></span>
                                                       <p className="hidden md:block text-[18px] tracking-wide font-medium">All Users</p>
@@ -87,7 +83,7 @@ const Sidebar = () => {
                                     {/* Contact */}
                                     <NavLink to={"/contact"} className={"flex  items-center gap-4 mt-4"}>
                                           <span><GrContact size={18} /></span>
-                                          <p className="hidden md:block text-[18px] tracking-wide font-medium text-yellow-500">Contact</p>
+                                          <p className="hidden md:block text-[18px] tracking-wide font-medium">Contact</p>
                                     </NavLink>
                               </div>
                         </div>
