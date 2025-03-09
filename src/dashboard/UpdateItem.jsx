@@ -37,9 +37,9 @@ const UpdateItem = () => {
                   const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
                   if (menuRes.data.modifiedCount > 0) {
                         Swal.fire({
-                              position: "top-end",
+                              position: "top-center",
                               icon: "success",
-                              title: `${data.name} is updated to the menu.`,
+                              title: `${data.name} is updated to the menu!`,
                               showConfirmButton: false,
                               timer: 1500,
                         });

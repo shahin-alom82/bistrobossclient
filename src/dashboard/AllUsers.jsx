@@ -41,7 +41,7 @@ const AllUsers = () => {
             });
 
       }
-      // Update Related Data
+      // Make Admin Data
 
       const handleMakeAdmin = user => {
             axiosSecure.patch(`/users/admin/${user._id}`)
