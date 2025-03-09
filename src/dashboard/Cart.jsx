@@ -39,7 +39,7 @@ const Cart = () => {
                   <div className="flex flex-col lg:flex-row justify-between items-center text-xl font-medium">
 
                         <h1 className="text-yellow-600">Total Item : {cart?.length}</h1>
-                        <p className="text-yellow-600">--- My Cart ---</p>
+                        <p className="text-yellow-600 text-xl">--- My Cart ---</p>
                         <div className="flex  flex-col lg:flex-row items-center lg:gap-20 gap-6">
                               <h1 className="mt-4 lg:mt-0 text-yellow-600">Total Price : ${totalprice.toFixed(2)}</h1>
                               <button className="bg-green-700 text-sm py-1.5 px-3 text-white">Pay Now</button>

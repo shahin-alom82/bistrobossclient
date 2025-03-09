@@ -32,7 +32,6 @@ const ManageItem = () => {
                                     text: "Cart item Deleted Successfully!",
                                     icon: "success"
                               });
-
                         }
                   }
             });
@@ -42,7 +41,7 @@ const ManageItem = () => {
 
       return (
             <div>
-                  <h1 className="text-lg text-yellow-600 tracking-wide">Total item : {menu?.length}</h1>
+                  <h1 className="text-2xl text-yellow-600 tracking-wide">Total item : {menu?.length}</h1>
 
 
                   <div className="mt-10">

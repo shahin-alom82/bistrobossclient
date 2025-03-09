@@ -64,7 +64,7 @@ const AllUsers = () => {
             <div>
                   <div>
                         <div className="flex flex-col lg:flex-row justify-between items-center text-xl font-medium">
-                              <h1 className="text-lg text-yellow-600 tracking-wide">Total User : {users?.length}</h1>
+                              <h1 className="text-2xl text-yellow-600 tracking-wide">Total User : {users?.length}</h1>
                         </div>
 
                         <div className="mt-10">

@@ -52,7 +52,7 @@ const AddItem = () => {
             <div className="px-4 sm:px-6 lg:px-8">
                   <div className="mt-10 lg:max-w-screen-md lg:mx-auto">
                         <div className="hidden md:block">
-                              <h1 className="text-xl text-yellow-600">--- Add item ---</h1>
+                              <h1 className="text-2xl text-yellow-600">--- Add item ---</h1>
                         </div>
                         <form
                               className="mt-10 flex flex-col gap-4"
