@@ -21,6 +21,7 @@ import AdminRoute from './components/Authentication/AdminRoute.jsx'
 import ManageItem from './dashboard/ManageItem.jsx'
 import UpdateItem from './dashboard/UpdateItem.jsx'
 import UserHome from './dashboard/UserHome.jsx'
+import AdminHome from './dashboard/AdminHome.jsx'
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([{
@@ -70,6 +71,10 @@ const router = createBrowserRouter([{
     {
       path: "userHome",
       element: <UserHome />
+    },
+    {
+      path: "adminHome",
+      element: <AdminHome />
     },
 
     {
