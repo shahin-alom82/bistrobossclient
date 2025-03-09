@@ -17,8 +17,9 @@ const UpdateItem = () => {
       const { register, handleSubmit } = useForm();
       const axiosPublic = useAxiosPublic();
       const axiosSecure = useAxiosSecure();
+
+
       const onSubmit = async (data) => {
-            console.log('dacnhahncadncadn', data);
             const imageFile = { image: data.image[0] };
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
                   headers: {
@@ -34,7 +35,6 @@ const UpdateItem = () => {
                         image: res.data.data.display_url,
                   };
                   const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
-                  console.log('data', menuRes.data);
                   if (menuRes.data.modifiedCount > 0) {
                         Swal.fire({
                               position: "top-end",
@@ -46,7 +46,6 @@ const UpdateItem = () => {
                         navigate("/dashboard/manageitems");
                   }
             }
-            console.log("with image url", res.data);
       };
 
       return (
