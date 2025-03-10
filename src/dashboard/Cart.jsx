@@ -3,6 +3,7 @@ import useCart from "../contants/useCart";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../contants/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
       const [cart, refetch] = useCart()
@@ -42,7 +43,14 @@ const Cart = () => {
                         <p className="text-yellow-600 text-xl">--- My Cart ---</p>
                         <div className="flex  flex-col lg:flex-row items-center lg:gap-20 gap-6">
                               <h1 className="mt-4 lg:mt-0 text-yellow-600">Total Price : ${totalprice.toFixed(2)}</h1>
-                              <button className="bg-green-700 text-sm py-1.5 px-3 text-white">Pay Now</button>
+
+                              {
+                                    cart.length ? <Link to={'/dashboard/payment'}>
+                                          <button className="bg-green-700 text-sm py-1.5 px-3 text-white">Pay Now</button>
+                                    </Link>
+                                          : <button disabled className="bg-gray-300 text-sm py-1.5 px-3 text-gray-400 cursor-not-allowed">Pay Now</button>
+                              }
+
                         </div>
                   </div>
 
