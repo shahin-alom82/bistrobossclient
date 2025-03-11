@@ -5,12 +5,13 @@ import Container from "./Container";
 import { useContext } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
 import { MdLogout } from "react-icons/md";
-import { nav } from "../contants";
 import useCart from "../contants/useCart";
+import useAdmin from "../contants/useAdmin";
 
 const Header = () => {
       const { user, logOut } = useContext(AuthContext);
       const [cart] = useCart()
+      const [isAdmin] = useAdmin()
 
       const handleLogout = async () => {
             try {
@@ -19,9 +20,17 @@ const Header = () => {
                   console.error("Logout error:", error);
             }
       };
+      const nav = [
+            { path: "/", title: "Home" },
+            { path: "/menu", title: "Our Menu" },
+            { path: "/order", title: "Our Shop" },
+            { path: "/contact", title: "Contact Us" },
+            // { path: "/dashboard", title: "Dashboard" },
+      ];
 
-
-
+      if (user) {
+            nav.push({ path: "/dashboard", title: "Dashboard" });
+      }
       return (
             <div>
                   <Container className="lg:fixed top-0 left-0 right-0 z-10 opacity-70 text-white bg-black">

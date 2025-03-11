@@ -46,7 +46,7 @@ const PaymentHistory = () => {
                                                 <p className="text-gray-800 font-medium text-[15px] lg:text-lg break-all">
                                                       {item?.email}
                                                 </p>
-                                                <p className="text-gray-800 font-medium text-[15px] lg:text-lg break-all ml-2">{item?.price}</p>
+                                                <p className="text-gray-800 font-medium text-[15px] lg:text-lg break-all ml-2">$ {item?.price}</p>
 
                                                 {/* Payment ID */}
                                                 <p className="text-gray-600 text-sm lg:text-base break-all lg:w-80">
