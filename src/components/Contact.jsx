@@ -15,7 +15,7 @@ const Contact = () => {
                         <title>Bistro Boss | Contact</title>
                   </Helmet>
                   <Container>
-                        <div className='relative'>
+                        <div className='relative hidden md:block'>
                               <img className='lg:h-[700px] w-full' src={img} alt="" />
                               <div className="absolute bottom-32 left-48 bg-black opacity-70 text-white text-center  py-32 px-72 hidden md:block">
                                     <h1 className="lg:text-5xl uppercase tracking-wide font-bold">CONTACT US</h1>
@@ -23,12 +23,12 @@ const Contact = () => {
                               </div>
                         </div>
                         <div className='mt-10'>
-                              <SectionTitle topHeading={'Visit Us'} middleHeading={'OUR LOCATION'} />
+                              <SectionTitle topHeading={'Visit Us'} middleHeading={'CONTACT US'} />
                         </div>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10'>
 
                               <div>
-                                    <span className='bg-yellow-500 px-4 py-4 flex items-center mx-auto justify-center text-white'><FiPhoneForwarded size={30} /></span>
+                                    <span className='bg-yellow-600 px-4 py-4 flex items-center mx-auto justify-center text-white'><FiPhoneForwarded size={30} /></span>
                                     <div className='border-l border-r border-b border-gray-300  px-8 '>
                                           <div className='bg-gray-300 items-center justify-center text-center py-4 mb-8'>
                                                 <p className='tracking-wide font-medium text-black text-xl'>PHONE</p>
@@ -37,7 +37,7 @@ const Contact = () => {
                                     </div>
                               </div>
                               <div>
-                                    <span className='bg-yellow-500 px-4 py-4 flex items-center mx-auto justify-center text-white'><FaLocationDot size={30} /></span>
+                                    <span className='bg-yellow-600 px-4 py-4 flex items-center mx-auto justify-center text-white'><FaLocationDot size={30} /></span>
                                     <div className='border-l border-r border-b border-gray-300  px-8 '>
                                           <div className='bg-gray-300 items-center justify-center text-center py-4 mb-8'>
                                                 <p className='tracking-wide font-medium text-black text-xl'>ADDRESS</p>
@@ -46,7 +46,7 @@ const Contact = () => {
                                     </div>
                               </div>
                               <div>
-                                    <span className='bg-yellow-500 px-4 py-4 flex items-center mx-auto justify-center text-white'><TbClockHour5Filled size={30} /></span>
+                                    <span className='bg-yellow-600 px-4 py-4 flex items-center mx-auto justify-center text-white'><TbClockHour5Filled size={30} /></span>
                                     <div className='border-l border-r border-b border-gray-300  px-8 '>
                                           <div className='bg-gray-300 items-center justify-center text-center py-4 mb-8'>
                                                 <p className='tracking-wide font-medium text-black text-xl'>WORKING HOURS</p>

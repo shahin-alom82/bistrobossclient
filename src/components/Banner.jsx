@@ -8,11 +8,10 @@ import img4 from "../assets/home/04.jpg";
 import img5 from "../assets/home/05.png";
 import img6 from "../assets/home/06.png";
 
-import Container from "../components/Container"
 
 const Banner = () => {
       return (
-            <Container>
+            <div className="lg:max-w-screen-xl mx-auto">
                   <Carousel>
                         <div className='carousel w-full lg:h-[650px]  object-cover '>
                               <img src={img1} alt="Slide 1" />
@@ -33,7 +32,7 @@ const Banner = () => {
                               <img src={img6} alt="Slide 6" />
                         </div>
                   </Carousel>
-            </Container>
+            </div>
       );
 };
 

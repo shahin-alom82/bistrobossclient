@@ -63,13 +63,13 @@ const AllUsers = () => {
       return (
             <div>
                   <div>
-                        <div className="flex flex-col lg:flex-row justify-between items-center text-xl font-medium">
-                              <h1 className="text-2xl text-yellow-600 tracking-wide">Total User : {users?.length}</h1>
+                        <div className="flex flex-col lg:flex-row justify-between lg:items-center text-xl font-medium">
+                              <h1 className="lg:text-2xl text-yellow-600 tracking-wide">Total User : {users?.length}</h1>
                         </div>
 
                         <div className="mt-10">
 
-                              <div className="hidden py-4 px-4 uppercase rounded-t-xl  bg-yellow-500 lg:grid  text-xl font-medium grid-cols-5 justify-between w-full ">
+                              <div className="hidden py-4 px-4 uppercase rounded-t-xl  text-white bg-yellow-600 lg:grid  text-xl font-medium grid-cols-5 justify-between w-full ">
                                     <p>SL.No</p>
                                     <p>Name</p>
                                     <p>Email</p>

@@ -30,7 +30,7 @@ const OrderShop = () => {
         <Cover image={img} topMenu={"Our Shop"} middleMenu={"Would you like to try a dish?"} />
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-4 mt-10 justify-center">
+        <div className="grid grid-cols-2 lg:w-[700px] mx-auto lg:grid-cols-6 items-center gap-4 mt-10 justify-center">
           {nav.map((item, index) => (
             <button
               key={index}
@@ -44,7 +44,7 @@ const OrderShop = () => {
         </div>
 
         {/* Product List */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
           {filteredMenu.length > 0 ? (
             filteredMenu.map((item) => <OrderCart item={item} key={item?._id} />)
           ) : (

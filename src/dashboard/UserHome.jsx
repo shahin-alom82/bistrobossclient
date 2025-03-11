@@ -45,7 +45,7 @@ const UserHome = () => {
             },
       ];
 
-      
+
       return (
             <div className="max-w-screen-lg">
                   <h1 className="text-yellow-600 tracking-wide lg:text-2xl flex items-center gap-2 font-medium">

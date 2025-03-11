@@ -7,6 +7,7 @@ import { AuthContext } from "../firebase/AuthProvider";
 import { MdLogout } from "react-icons/md";
 import useCart from "../contants/useCart";
 import useAdmin from "../contants/useAdmin";
+import { IoCloseSharp } from "react-icons/io5";
 
 const Header = () => {
       const { user, logOut } = useContext(AuthContext);
@@ -81,6 +82,9 @@ const Header = () => {
                                                 <span className="absolute right-1 text-sm bottom-[26px] text-white px-1 rounded-full">{cart?.length}</span>
                                           </div>
                                     </Link>
+                              </div>
+                              <div className="block md:hidden">
+                                    <IoCloseSharp size={30} />
                               </div>
                         </div>
                   </Container>

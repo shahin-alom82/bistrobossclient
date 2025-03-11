@@ -41,12 +41,12 @@ const ManageItem = () => {
 
       return (
             <div>
-                  <h1 className="text-2xl text-yellow-600 tracking-wide">Total item : {menu?.length}</h1>
+                  <h1 className="lg:text-2xl text-yellow-600 tracking-wide">Total item : {menu?.length}</h1>
 
 
                   <div className="mt-10">
 
-                        <div className="hidden py-4 px-4 uppercase rounded-t-xl  bg-yellow-500 lg:grid  text-xl font-medium grid-cols-5 justify-between w-full ">
+                        <div className="hidden py-4 px-4 uppercase rounded-t-xl  bg-yellow-600 text-white lg:grid  text-xl font-medium grid-cols-5 justify-between w-full ">
                               <p>image</p>
                               <p>Name</p>
                               <p>Price</p>

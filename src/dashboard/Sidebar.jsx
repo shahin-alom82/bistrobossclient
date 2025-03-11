@@ -6,7 +6,7 @@ import { LuShoppingBag } from "react-icons/lu";
 import { MdPayment } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import useCart from "../contants/useCart";
-import { FaBook, FaList, FaUtensils } from "react-icons/fa6";
+import { FaList, FaUtensils } from "react-icons/fa6";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import useAdmin from "../contants/useAdmin";
 

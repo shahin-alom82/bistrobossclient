@@ -56,7 +56,7 @@ const Cart = () => {
 
                   <div className="mt-10">
 
-                        <div className="hidden py-4 px-4 uppercase rounded-t-xl  bg-yellow-500 lg:grid  text-xl font-medium grid-cols-4 justify-between w-full ">
+                        <div className="hidden py-4 px-4 uppercase rounded-t-xl text-white  bg-yellow-600 lg:grid  text-xl font-medium grid-cols-4 justify-between w-full ">
                               <p>image</p>
                               <p>Name</p>
                               <p>Price</p>
@@ -74,7 +74,7 @@ const Cart = () => {
                                                 </div>
                                                 <p className="text-lg tracking-wide text-gray-800 font-medium">{item?.name}</p>
                                                 <p className="text-lg tracking-wide text-gray-800 font-medium">${item?.price}</p>
-                                                <span onClick={() => handleDelete(item?._id)} className="cursor-pointer duration-300 text-red-600"><RiDeleteBinLine size={20} /></span>
+                                                <span onClick={() => handleDelete(item?._id)} className="cursor-pointer duration-300 text-red-600"><RiDeleteBinLine size={25} /></span>
                                           </div>
                                     </div>
                               ))}
