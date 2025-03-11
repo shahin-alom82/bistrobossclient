@@ -23,6 +23,7 @@ import UpdateItem from './dashboard/UpdateItem.jsx'
 import UserHome from './dashboard/UserHome.jsx'
 import AdminHome from './dashboard/AdminHome.jsx'
 import Payment from './dashboard/Payment/Payment.jsx'
+import PaymentHistory from './dashboard/Payment/PaymentHistory.jsx'
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([{
@@ -68,10 +69,14 @@ const router = createBrowserRouter([{
       path: "userHome",
       element: <UserHome />
     },
-    
+
     {
       path: "payment",
       element: <Payment />
+    },
+    {
+      path: "paymenthistory",
+      element: <PaymentHistory />
     },
 
     // Admin Route 
