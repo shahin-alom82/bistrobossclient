@@ -99,8 +99,6 @@ const CheckoutForm = () => {
                         }
                         refetch();
                         navigate("/dashboard/paymenthistory");
-
-
                   }
             }
 
