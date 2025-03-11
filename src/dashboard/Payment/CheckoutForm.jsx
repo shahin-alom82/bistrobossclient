@@ -1,17 +1,17 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdPayment } from "react-icons/md";
-import useCart from "../../contants/useCart";
 import useAxiosSecure from "../../contants/useAxiosSecure";
-import useAuth from "../../contants/useAuth";
+import { AuthContext } from "../../firebase/AuthProvider";
+import useCart from "../../contants/useCart";
 
 const CheckoutForm = () => {
       const [clientSecret, setClientSecret] = useState('')
       const [error, setError] = useState('')
       const stripe = useStripe()
       const elements = useElements()
-      const cart = useCart()
-      const { user } = useAuth()
+      const [cart, refetch] = useCart()
+      const { user } = useContext(AuthContext)
       const axiosSecure = useAxiosSecure()
 
       const totalPrice = cart.reduce((total, item) => total + item.price, 0)
@@ -33,6 +33,7 @@ const CheckoutForm = () => {
                   return
             }
             const card = elements.getElement(CardElement)
+
             if (card == null) {
                   return
             }
