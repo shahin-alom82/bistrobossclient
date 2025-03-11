@@ -59,7 +59,7 @@ const Sidebar = () => {
                                                       <p className="hidden md:block text-[18px] tracking-wide font-medium">My Cart {cart?.length}</p>
                                                 </NavLink>
                                                 {/* Payment */}
-                                                <NavLink to={"/dashboard/payment"} className={"flex  items-center gap-4"}>
+                                                <NavLink to={"/dashboard/paymenthistory"} className={"flex  items-center gap-4"}>
                                                       <span><MdPayment size={20} /></span>
                                                       <p className="hidden md:block text-[18px] tracking-wide font-medium">Payment History</p>
                                                 </NavLink>

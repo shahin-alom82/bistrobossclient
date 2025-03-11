@@ -6,7 +6,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_payment_gateway_pk)
 const Payment = () => {
       return (
             <div>
-                  <h1 className="lg:text-2xl tracking-wide text-yellow-600">--- Payment History ---</h1>
+                  <h1 className="lg:text-2xl tracking-wide text-yellow-600">--- Payment Card ---</h1>
                   <div>
                         <Elements stripe={stripePromise}>
                               <CheckoutForm />

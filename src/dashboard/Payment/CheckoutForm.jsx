@@ -4,6 +4,8 @@ import { MdPayment } from "react-icons/md";
 import useAxiosSecure from "../../contants/useAxiosSecure";
 import { AuthContext } from "../../firebase/AuthProvider";
 import useCart from "../../contants/useCart";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
       const [clientSecret, setClientSecret] = useState('')
@@ -14,6 +16,7 @@ const CheckoutForm = () => {
       const [cart, refetch] = useCart()
       const { user } = useContext(AuthContext)
       const axiosSecure = useAxiosSecure()
+      const navigate = useNavigate()
 
       const totalPrice = cart.reduce((total, item) => total + item.price, 0)
 
@@ -68,6 +71,34 @@ const CheckoutForm = () => {
                   if (paymentIntent.status === 'succeeded') {
                         console.log('transaction id', paymentIntent.id)
                         setTransactionId(paymentIntent.id)
+
+
+                        // Now Save The Payment in The Database
+
+                        const payment = {
+                              price: totalPrice,
+                              transactionsId: paymentIntent.id,
+                              email: user.email,
+                              data: new Date(),
+                              cartIds: cart.map((item) => item._id),
+                              menuItemIds: cart.map((item) => item.menuId),
+                              status: "Pending",
+                        };
+                        const res = await axiosSecure.post("/payments", payment);
+                        console.log("save", res.data);
+                        if (res.data?.paymentResult?.insertedId) {
+                              Swal.fire({
+                                    position: "top-center",
+                                    icon: "success",
+                                    title: "Your payment success",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                              });
+                        }
+                        refetch();
+                        navigate("/dashboard/paymenthistory");
+
+
                   }
             }
 
