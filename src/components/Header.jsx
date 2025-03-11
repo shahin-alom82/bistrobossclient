@@ -6,13 +6,11 @@ import { useContext } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
 import { MdLogout } from "react-icons/md";
 import useCart from "../contants/useCart";
-import useAdmin from "../contants/useAdmin";
 import { IoCloseSharp } from "react-icons/io5";
 
 const Header = () => {
       const { user, logOut } = useContext(AuthContext);
       const [cart] = useCart()
-      const [isAdmin] = useAdmin()
 
       const handleLogout = async () => {
             try {
@@ -83,6 +81,7 @@ const Header = () => {
                                           </div>
                                     </Link>
                               </div>
+                              {/* Mobile Nav */}
                               <div className="block md:hidden">
                                     <IoCloseSharp size={30} />
                               </div>
