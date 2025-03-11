@@ -55,7 +55,7 @@ const PaymentHistory = () => {
 
                                                 {/* Payment Date */}
                                                 <p className="text-gray-600 text-sm lg:text-base lg:ml-16">
-                                                      {item?.data.slice(0, 10)}
+                                                      {item?.date.slice(0, 10)}
                                                 </p>
 
                                                 {/* Payment Status */}
