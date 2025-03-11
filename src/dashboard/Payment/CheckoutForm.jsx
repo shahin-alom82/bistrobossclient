@@ -7,6 +7,7 @@ import useCart from "../../contants/useCart";
 
 const CheckoutForm = () => {
       const [clientSecret, setClientSecret] = useState('')
+      const [transactionId, setTransactionId] = useState('')
       const [error, setError] = useState('')
       const stripe = useStripe()
       const elements = useElements()
@@ -56,7 +57,7 @@ const CheckoutForm = () => {
                         card: card,
                         billing_details: {
                               email: user?.email || 'anonymous',
-                              // name: user?.displayName || 'anonymous'
+                              name: user?.displayName || 'anonymous'
                         }
                   }
             })
@@ -64,6 +65,10 @@ const CheckoutForm = () => {
                   console.log('confirm error')
             } else {
                   console.log('payment intent', paymentIntent)
+                  if (paymentIntent.status === 'succeeded') {
+                        console.log('transaction id', paymentIntent.id)
+                        setTransactionId(paymentIntent.id)
+                  }
             }
 
       }
@@ -99,7 +104,8 @@ const CheckoutForm = () => {
                         <button type="submit" className="bg-yellow-500 w-20 py-1 mt-3 text-xl text-gray-700" disabled={!stripe || !clientSecret}>
                               Pay
                         </button>
-                        <p className="text-red-600 mt-2">{error}</p>
+                        <p className="text-red-600 mt-2 text-sm tracking-wide">{error}</p>
+                        {transactionId && <p className="text-green-600 mt-2 text-sm tracking-wide">Your Transaction id {transactionId}</p>}
                   </form>
             </div>
       );
