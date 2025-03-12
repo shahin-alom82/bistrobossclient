@@ -107,9 +107,12 @@ import { IoCloseSharp, IoMenuSharp } from "react-icons/io5";
 import Container from "./Container";
 import { AuthContext } from "../firebase/AuthProvider";
 import useCart from "../contants/useCart";
+import useAdmin from "../contants/useAdmin";
 
 const Header = () => {
       const { user, logOut } = useContext(AuthContext);
+      const [isAdmin] = useAdmin()
+      console.log('user & isAdmin', user)
       const [cart] = useCart();
       const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -126,11 +129,17 @@ const Header = () => {
             { path: "/menu", title: "Our Menu" },
             { path: "/order", title: "Our Shop" },
             { path: "/contact", title: "Contact Us" },
+
       ];
 
-      if (user) {
-            nav.push({ path: "/dashboard", title: "Dashboard" });
+      if (user || isAdmin) {
+            nav.push({ path: "/dashboard/adminHome", title: "Dashboard" });
       }
+
+
+
+
+
 
       return (
             <div>
