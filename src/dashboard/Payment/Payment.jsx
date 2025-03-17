@@ -1,7 +1,7 @@
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
-// TODO :
+// TODO :c
 const stripePromise = loadStripe(import.meta.env.VITE_payment_gateway_pk)
 const Payment = () => {
       return (
